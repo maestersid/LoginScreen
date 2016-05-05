@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="LoginScreen.LoginScreen"
+	Title="Login"
+	BackgroundColor="#2196F3">
+	<ContentPage.Content>
+		<StackLayout HorizontalOptions="Center" >
+			<Image Source="ic_d20.png" 
+				WidthRequest="120" 
+				HeightRequest="120"
+				VerticalOptions="Start" />
+
+				<!--
+				<Label Text="Please Enter User Info:" TextColor="White"
+					VerticalOptions="Center"/>
+				<Entry x:Name="usernameTxt" Placeholder="Username"/>
+				<Entry x:Name="passwordTxt" IsPassword="true" Placeholder="*******"/>
+				-->
+				<Button x:Name="loginBtn" 
+				Text="Login"
+				BackgroundColor="#FFFFFF"/>
+				<Label x:Name="failureTxt" Text="Login Failed" IsVisible="false"/>
+
+		</StackLayout>
+
+	</ContentPage.Content>
+</ContentPage>

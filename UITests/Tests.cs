@@ -30,6 +30,24 @@ namespace UITests
 		{
 			app.Screenshot("First screen.");
 		}
+
+		[Test]
+		public void FullTestRun()
+		{
+			app.Tap(x => x.Class("AppCompatButton").Text("Login"));
+			app.Screenshot("Tapped on view with class: AppCompatButton");
+			app.Tap(x => x.Id("agentWebView").Css("#cred_userid_inputtext"));
+			app.Screenshot("Tapped on view with class: WebView marked: Web View");
+			app.EnterText(x => x.Id("agentWebView").Css("#cred_userid_inputtext"), "james@loginappexample.onmicrosoft.com");
+			app.Tap(x => x.Id("agentWebView").Css("#cred_password_inputtext"));
+			app.Screenshot("Tapped on view with class: WebView marked: Web View");
+			app.EnterText(x => x.Id("agentWebView").Css("#cred_password_inputtext"), "Password1");
+			app.Tap(x => x.Id("agentWebView").Css("#cred_sign_in_button"));
+			app.Screenshot("Tapped on view with class: WebView marked: Web View");
+			app.Tap(x => x.Text("Get Data"));
+			app.Screenshot("Tapped on view with class: AppCompatButton");
+		}
+
 	}
 }
 

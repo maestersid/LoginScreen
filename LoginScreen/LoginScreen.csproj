@@ -35,13 +35,13 @@
     <Compile Include="LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AuthServices.cs" />
-    <Compile Include="IAuthenticator.cs" />
     <Compile Include="DataDisplay.xaml.cs">
       <DependentUpon>DataDisplay.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DataViewModel.cs" />
-    <Compile Include="Monkey.cs" />
+    <Compile Include="Models\AuthServices.cs" />
+    <Compile Include="Models\IAuthenticator.cs" />
+    <Compile Include="Models\Monkey.cs" />
+    <Compile Include="ViewModel\DataViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Spatial">
@@ -94,6 +94,10 @@
     <EmbeddedResource Include="DataDisplay.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.2.0.31\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.2.0.31\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

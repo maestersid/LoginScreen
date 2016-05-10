@@ -137,6 +137,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Authenticator.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_d20.png" />

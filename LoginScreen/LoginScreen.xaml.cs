@@ -16,30 +16,13 @@ namespace LoginScreen
 
 		async void OnLoginClicked(object sender, EventArgs e)
 		{
-			//var username = usernameTxt.Text;
-			//var pwd = passwordTxt.Text;
 
-			//if(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(pwd))
-			//{
-			//	DisplayAlert("Invalid Credentials", $"Username and password cannot be empty!", "OK");
-			//	return;
-			//}
-
-
-			//TODO
 			var auth = new AuthServices();
 
 			if(	await auth.AuthenticateAsync() )
 			{
 				failureTxt.IsVisible = false;
-				await Navigation.PushAsync(new ContentPage
-				{
-					Content = new Label
-					{
-						Text = "Login Successful!"
-					}
-
-					});
+				await Navigation.PushAsync(new DataDisplay());
 			}
 			else
 			{

@@ -1,13 +1,16 @@
 ﻿using System;
-using System.Threading.Tasks;
-using Android.App;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using System.Linq;
 using Xamarin.Forms;
-using LoginScreen.Droid;
+using LoginScreen.iOS;
+using Xamarin.Forms;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using System.Threading.Tasks;
+using System.Linq;
+using System.Runtime.Remoting.Messaging;
+using UIKit;
 
 [assembly: Dependency(typeof(Authenticator))]
-namespace LoginScreen.Droid
+
+namespace LoginScreen.iOS
 {
 	public class Authenticator : IAuthenticator
 	{
@@ -19,14 +22,20 @@ namespace LoginScreen.Droid
 		{
 			var authContext = new AuthenticationContext(authority);
 
-			if(authContext.TokenCache.ReadItems().Any())
+			if (authContext.TokenCache.ReadItems().Any())
 			{
 				authContext = new AuthenticationContext(authContext.TokenCache.ReadItems().First().Authority);
 			}
 
-			var parameters = new PlatformParameters((Activity)Forms.Context);
+			var controller = UIApplication.SharedApplication.KeyWindow.RootViewController;
+			while(controller.PresentedViewController != null)
+			{
+				controller = controller.PresentedViewController;
+			}
 
-			var authResult = await authContext.AcquireTokenAsync(resourceId, clientId, redirectUri, parameters);
+			var paramaters = new PlatformParameters(controller);
+
+			var authResult = await authContext.AcquireTokenAsync(resourceId, clientId, redirectUri, paramaters);
 			return authResult;
 		}
 
@@ -42,12 +51,11 @@ namespace LoginScreen.Droid
 			}
 			catch (Exception ex)
 			{
-				
+
 				return false;
 			}
 			return true;
 		}
-
 	}
 }
 
